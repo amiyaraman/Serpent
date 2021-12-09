@@ -1,28 +1,32 @@
-import styled from "styled-components";
+
 import { AccountBox } from "./components/accountBox";
+import React from "react";
+import "./App.css"
+import HomePage from "./components/homePage/HomePage.js";
+import Registerpage from "./components/accountBox/registerpage"
+import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
 
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  padding: 35px;
-
-  min-height: 100vh;
-
-  background-image: url(image/serpentbackgroundimage.png);
-  background-repeat: no-repeat;
-`;
 function App() {
   return (
-    <AppContainer>
-      <AccountBox />
-      
-    </AppContainer>
+    <div className="anything">
+
+      <Router>
+        <div className="nav-bar">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to ="/register">register</Link>
+        </div>
+        <Routes>
+          <Route path="/" element={<AccountBox />}></Route>
+          <Route path="/about" element={<HomePage />}></Route>
+          <Route path="/register" element={<Registerpage/>}></Route>
+        </Routes>
+      </Router>
+
+      {/* <AccountBox />
+      <HomePage></HomePage> */}
+    </div>
   );
 }
 
